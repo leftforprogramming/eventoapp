@@ -64,4 +64,11 @@ public class EventoModel implements Serializable{
         this.id = id;
     }
 
+    public EventoModel(String nome, String local, String data, String horario) {
+        this.nome = nome;
+        this.local = local;
+        this.data = data;
+        this.horario = horario;
+    }
+
 }
