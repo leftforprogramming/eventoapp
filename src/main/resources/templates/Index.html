@@ -15,7 +15,7 @@
             <a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add</i>Cadastrar Evento</a>
         </div>
         <div class="row">
-            <table>
+            <table class="highlight">
                 <thead>
                     <th>Nome</th>
                     <th>Local</th>
@@ -24,7 +24,11 @@
                 </thead>
                 <tbody>
                     <tr th:each="evento : ${eventos}">
-                        <td><span th:text="${evento.nome}"></span></td>
+                        <td>
+                            <a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.id)).build()}">
+                                <span th:text="${evento.nome}"></span>
+                            </a>
+                        </td>
                         <td><span th:text="${evento.local}"></span></td>
                         <td><span th:text="${evento.data}"></span></td>
                         <td><span th:text="${evento.horario}"></span></td>
