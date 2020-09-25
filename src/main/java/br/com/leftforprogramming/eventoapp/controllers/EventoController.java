@@ -35,10 +35,10 @@ public class EventoController {
         return mv;
     }
 
-    @RequestMapping("/{codigo}")
-    public ModelAndView detalheEvento(@PathVariable("codigo") long codigo){
-        EventoModel evento = this.eventoRepository.findById(codigo);
-        ModelAndView mv = new ModelAndView("detalhesEvento");
+    @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    public ModelAndView detalhesEvento(@PathVariable("id") long id){
+        EventoModel evento = this.eventoRepository.findById(id).get();
+        ModelAndView mv = new ModelAndView("evento/detalhesEvento");
         mv.addObject("evento", evento);
         return mv;
     }
