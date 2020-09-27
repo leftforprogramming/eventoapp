@@ -15,12 +15,58 @@
             <a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">perm_contact_calendar</i>Lista de Eventos</a>
             <a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add</i>Cadastrar Evento</a>
         </div>
-        <div th:each="evento : ${evento}">
             <div class="row">                
-                <p>Nome: <span th:text="${evento.nome}"></span></p>
-                <p>Local: <span th:text="${evento.local}"></span></p>
-                <p>Data: <span th:text="${evento.data}"></span></p>
-                <p>Horario: <span th:text="${evento.horario}"></span></p>
+                <table class="highlight">
+                    <thead>
+                        <th>Nome</th>
+                        <th>Local</th>
+                        <th>Data</th>
+                        <th>Horario</th>
+                    </thead>
+                    <tbody>
+                        <tr th:each="evento : ${evento}">
+                            <td><span th:text="${evento.nome}"></span></td>
+                            <td><span th:text="${evento.local}"></span></td>
+                            <td><span th:text="${evento.data}"></span></td>
+                            <td><span th:text="${evento.horario}"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <h5>Adicionar Convidado</h5>
+                </div>
+                <form method="POST">
+                    <div class="input-field col s4">
+                        Nome:<input type="text" value="" name="nome" />
+                    </div>
+                    <div class="input-field col s4">
+                        RG:<input type="text" value="" name="rg" />
+                    </div>
+                    <div class="input-field col s4">
+                        <button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <h5>Convidados</h5>
+                </div>
+                <div class="input-field col s12">
+                    <table class="highlight">
+                        <thead>
+                            <th>Nome</th>
+                            <th>RG</th>
+                        </thead>
+                        <tbody>
+                            <tr th:each="convidado : ${convidados}">
+                                <td><span th:text="${convidado.nome}"></span></td>
+                                <td><span th:text="${convidado.rg}"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </main>
