@@ -1,11 +1,13 @@
 package br.com.leftforprogramming.eventoapp.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +22,8 @@ public class EventoModel implements Serializable{
     private String local;
     private String data;
     private String horario;
+    @OneToMany
+    private List<ConvidadoModel> convidados;
 
     public EventoModel() {
     }
@@ -69,6 +73,14 @@ public class EventoModel implements Serializable{
         this.local = local;
         this.data = data;
         this.horario = horario;
+    }
+
+    public List<ConvidadoModel> getConvidados() {
+        return convidados;
+    }
+
+    public void setConvidados(List<ConvidadoModel> convidados) {
+        this.convidados = convidados;
     }
 
 }
