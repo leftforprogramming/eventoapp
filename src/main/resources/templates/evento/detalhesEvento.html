@@ -60,9 +60,9 @@
                             <th>RG</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><span></span></td>
-                                <td><span></span></td>
+                            <tr th:each="convidado : ${convidados}">
+                                <td><span th:text="${convidado.nome}"></span></td>
+                                <td><span th:text="${convidado.rg}"></span></td>
                             </tr>
                         </tbody>
                     </table>
