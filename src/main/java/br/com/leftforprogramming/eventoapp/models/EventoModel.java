@@ -79,8 +79,8 @@ public class EventoModel implements Serializable{
         return convidados;
     }
 
-    public void setConvidados(ConvidadoModel convidado) {
-        this.convidados.add(convidado);
+    public void setConvidados(List<ConvidadoModel> convidados) {
+        this.convidados = convidados;
     }
 
 }

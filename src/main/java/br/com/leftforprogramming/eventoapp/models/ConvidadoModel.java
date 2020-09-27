@@ -50,5 +50,4 @@ public class ConvidadoModel implements Serializable{
         this.nome = nome;
     }
 
-    
 }
