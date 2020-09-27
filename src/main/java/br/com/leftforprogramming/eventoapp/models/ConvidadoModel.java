@@ -15,7 +15,6 @@ public class ConvidadoModel implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String rg;
     private String nome;
     @ManyToOne
@@ -48,4 +47,10 @@ public class ConvidadoModel implements Serializable{
         this.evento = evento;
     }
 
+    public ConvidadoModel(String rg, String nome) {
+        this.rg = rg;
+        this.nome = nome;
+    }
+
+    
 }
