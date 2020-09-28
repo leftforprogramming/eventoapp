@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="convidado")
@@ -13,7 +14,9 @@ public class ConvidadoModel implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
+    @NotEmpty
     private String rg;
+    @NotEmpty
     private String nome;
     @ManyToOne
     private EventoModel evento;

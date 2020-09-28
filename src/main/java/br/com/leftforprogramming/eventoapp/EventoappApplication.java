@@ -17,16 +17,26 @@ public class EventoappApplication implements CommandLineRunner {
 
 	@Autowired
 	private EventoRepository eventoRepository;
+	@Autowired
+	private ConvidadoRepository convidadoRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(EventoappApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		EventoModel eventoCES = new EventoModel("CES 2020","São Paulo","03/06/2020","15:00");
-		EventoModel eventoComix = new EventoModel("Comix 2020","Salvador","03/07/2020","15:30");
-		EventoModel eventoRockInRio = new EventoModel("Rock in Rio 2020","Rio de Janeiro","03/08/2020","16:00");
+		EventoModel evento = new EventoModel("CES 2020","São Paulo","03/06/2020","15:00");
 
-		this.eventoRepository.saveAll(Arrays.asList(eventoCES, eventoComix, eventoRockInRio));
+		this.eventoRepository.saveAll(Arrays.asList(evento));
+
+		ConvidadoModel convidado = new ConvidadoModel("123", "Marcos");
+		
+		this.convidadoRepository.save(convidado);
+		
+		convidado.setEvento(evento);
+		evento.setConvidados(Arrays.asList(convidado));
+
+		this.eventoRepository.saveAll(Arrays.asList(evento));
+		this.convidadoRepository.save(convidado);
 	}
 }
