@@ -9,69 +9,80 @@
     <title>Detalhes Evento | EventosApp</title>
 </head>
 <body>
+	<header>
+		<nav class="menu">
+		    <div class="nav-wrapper">
+                <a href="#" class="brand-logo">&nbsp Detalhes do Evento</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+		            <li>
+                        <a class="waves-effect waves-light btn" href="/eventos">
+                            <i class="material-icons left">perm_contact_calendar</i>Lista de Eventos
+                        </a>
+                        <a class="waves-effect waves-light btn" href="/cadastrarEvento">
+                            <i class="material-icons left">add</i>Cadastrar Evento
+                        </a>
+                    </li>
+                </ul>
+		    </div>
+		</nav>
+	</header>
     <main class="container">
-        <div class="row">
-            <h1>Detalhes Evento</h1>
-            <a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">perm_contact_calendar</i>Lista de Eventos</a>
-            <a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add</i>Cadastrar Evento</a>
+        <div class="row">                
+            <table class="highlight">
+                <thead>
+                    <th>Nome</th>
+                    <th>Local</th>
+                    <th>Data</th>
+                    <th>Horario</th>
+                </thead>
+                <tbody>
+                    <tr th:each="evento : ${evento}">
+                        <td><span th:text="${evento.nome}"></span></td>
+                        <td><span th:text="${evento.local}"></span></td>
+                        <td><span th:text="${evento.data}"></span></td>
+                        <td><span th:text="${evento.horario}"></span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-            <div class="row">                
+        <div class="row">
+            <div class="input-field col s12">
+                <th:block th:include="mensagemValidacao"></th:block>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <h5>Adicionar Convidado</h5>
+            </div>
+            <form method="POST">
+                <div class="input-field col s4">
+                    Nome:<input type="text" value="" name="nome" />
+                </div>
+                <div class="input-field col s4">
+                    RG:<input type="text" value="" name="rg" />
+                </div>
+                <div class="input-field col s4">
+                    <button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <h5>Convidados</h5>
+            </div>
+            <div class="input-field col s12">
                 <table class="highlight">
                     <thead>
                         <th>Nome</th>
-                        <th>Local</th>
-                        <th>Data</th>
-                        <th>Horario</th>
+                        <th>RG</th>
                     </thead>
                     <tbody>
-                        <tr th:each="evento : ${evento}">
-                            <td><span th:text="${evento.nome}"></span></td>
-                            <td><span th:text="${evento.local}"></span></td>
-                            <td><span th:text="${evento.data}"></span></td>
-                            <td><span th:text="${evento.horario}"></span></td>
+                        <tr th:each="convidado : ${convidados}">
+                            <td><span th:text="${convidado.nome}"></span></td>
+                            <td><span th:text="${convidado.rg}"></span></td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <th:block th:include="mensagemValidacao"></th:block>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <h5>Adicionar Convidado</h5>
-                </div>
-                <form method="POST">
-                    <div class="input-field col s4">
-                        Nome:<input type="text" value="" name="nome" />
-                    </div>
-                    <div class="input-field col s4">
-                        RG:<input type="text" value="" name="rg" />
-                    </div>
-                    <div class="input-field col s4">
-                        <button class="waves-effect waves-light btn" type="submit">Adicionar</button>
-                    </div>
-                </form>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <h5>Convidados</h5>
-                </div>
-                <div class="input-field col s12">
-                    <table class="highlight">
-                        <thead>
-                            <th>Nome</th>
-                            <th>RG</th>
-                        </thead>
-                        <tbody>
-                            <tr th:each="convidado : ${convidados}">
-                                <td><span th:text="${convidado.nome}"></span></td>
-                                <td><span th:text="${convidado.rg}"></span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
     </main>
