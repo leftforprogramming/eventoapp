@@ -9,11 +9,21 @@
     <title>Cadastro de Evento | EventosApp</title>
 </head>
 <body>
+	<header>
+		<nav class="menu">
+		    <div class="nav-wrapper">
+                <a href="#" class="brand-logo">&nbsp Cadastro de Evento</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+		            <li>
+                        <a class="waves-effect waves-light btn" href="/eventos">
+                            <i class="material-icons left">perm_contact_calendar</i>Lista de Eventos
+                        </a>
+                    </li>
+                </ul>
+		    </div>
+		</nav>
+	</header>
     <main class="container">
-        <div class="row">
-            <h1>Cadastro de Evento</h1>
-            <a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">perm_contact_calendar</i>Lista de Eventos</a>
-        </div>
         <div class="row">
             <div class="input-field col s12">
                 <th:block th:include="mensagemValidacao"></th:block>
