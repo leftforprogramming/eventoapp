@@ -69,4 +69,14 @@ public class EventoController {
         atributes.addFlashAttribute("mensagem", "Convidado cadastrado!");
         return "redirect:/{id}";
     }
+    
+    @RequestMapping("/deletarConvidado")
+    public String deletarConvidado(String rg){
+        ConvidadoModel convidado = this.convidadoRepository.findById(rg).get();
+        this.convidadoRepository.delete(convidado);
+
+        EventoModel evento = convidado.getEvento();
+        long id = evento.getId();
+        return "redirect:/"+id;
+    }
 }
