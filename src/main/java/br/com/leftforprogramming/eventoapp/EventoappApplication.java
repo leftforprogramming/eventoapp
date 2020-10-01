@@ -25,18 +25,6 @@ public class EventoappApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		EventoModel evento = new EventoModel("CES 2020","São Paulo","03/06/2020","15:00");
 
-		this.eventoRepository.saveAll(Arrays.asList(evento));
-
-		ConvidadoModel convidado = new ConvidadoModel("123", "Marcos");
-		
-		this.convidadoRepository.save(convidado);
-		
-		convidado.setEvento(evento);
-		evento.setConvidados(Arrays.asList(convidado));
-
-		this.eventoRepository.saveAll(Arrays.asList(evento));
-		this.convidadoRepository.save(convidado);
 	}
 }

@@ -1,5 +1,7 @@
 package br.com.leftforprogramming.eventoapp.controllers;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +59,13 @@ public class EventoController {
         return mv;
     }
     
+    @RequestMapping("/deletar")
+    public String deletarEvento(long id) {
+        EventoModel evento = this.eventoRepository.findById(id).get();
+        this.eventoRepository.delete(evento);
+        return "redirect:/eventos";
+    }
+
     @RequestMapping(value="/{id}", method=RequestMethod.POST)
     public String adicionarConvidado(@PathVariable("id") long id, @Valid ConvidadoModel convidado, BindingResult result, RedirectAttributes atributes){
         if (result.hasErrors()){
